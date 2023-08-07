@@ -9,13 +9,16 @@ class Response
 {
   long code;
   std::string body;
+
 public:
   Response(long code_, std::string body_) : code(code_), body(std::move(body_))
   {}
-  long status_code() const {
+  long status_code() const
+  {
     return code;
   }
-  std::string get_body() const {
+  std::string get_body() const
+  {
     return body;
   }
 };

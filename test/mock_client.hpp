@@ -11,15 +11,16 @@ struct RecordedRequest
   std::string method;
   std::string path;
   std::string body;
-  bool operator <=>(const RecordedRequest &other) const = default;
+  bool operator<=>(const RecordedRequest &other) const = default;
 };
 
-std::ostream& operator <<(std::ostream& os, const RecordedRequest& value);
+std::ostream &operator<<(std::ostream &os, const RecordedRequest &value);
 
 class MockClient : public simple_cpp::github_rest::Client
 {
   std::queue<RecordedRequest> recorded_requests;
   std::queue<simple_cpp::github_rest::Response> mock_responses;
+
 public:
   MockClient();
   ~MockClient();

@@ -19,21 +19,17 @@ struct Reference
 };
 } // namespace simple_cpp::github_rest
 
-template <>
-struct glz::meta<simple_cpp::github_rest::ObjectRef> {
+template<> struct glz::meta<simple_cpp::github_rest::ObjectRef>
+{
   using T = simple_cpp::github_rest::ObjectRef;
-  static constexpr auto value = object(
-    "sha", &simple_cpp::github_rest::ObjectRef::sha,
-    "type", &simple_cpp::github_rest::ObjectRef::type
-  );
+  static constexpr auto value =
+    object("sha", &simple_cpp::github_rest::ObjectRef::sha, "type", &simple_cpp::github_rest::ObjectRef::type);
 };
 
-template <>
-struct glz::meta<simple_cpp::github_rest::Reference> {
+template<> struct glz::meta<simple_cpp::github_rest::Reference>
+{
   using T = simple_cpp::github_rest::Reference;
-  static constexpr auto value = object(
-    "object", &simple_cpp::github_rest::Reference::object
-  );
+  static constexpr auto value = object("object", &simple_cpp::github_rest::Reference::object);
 };
 
 #endif // SIMPLE_CPP_GITHUB_REST_REFERENCE_HPP

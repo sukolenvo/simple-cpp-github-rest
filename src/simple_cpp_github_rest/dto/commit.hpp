@@ -17,21 +17,17 @@ struct Commit
 };
 } // namespace simple_cpp::github_rest
 
-template <>
-struct glz::meta<simple_cpp::github_rest::TreeRef> {
+template<> struct glz::meta<simple_cpp::github_rest::TreeRef>
+{
   using T = simple_cpp::github_rest::TreeRef;
-  static constexpr auto value = object(
-    "sha", &simple_cpp::github_rest::TreeRef::sha
-  );
+  static constexpr auto value = object("sha", &simple_cpp::github_rest::TreeRef::sha);
 };
 
-template <>
-struct glz::meta<simple_cpp::github_rest::Commit> {
+template<> struct glz::meta<simple_cpp::github_rest::Commit>
+{
   using T = simple_cpp::github_rest::Commit;
-  static constexpr auto value = object(
-    "sha", &simple_cpp::github_rest::Commit::sha,
-    "tree", &simple_cpp::github_rest::Commit::tree
-  );
+  static constexpr auto value =
+    object("sha", &simple_cpp::github_rest::Commit::sha, "tree", &simple_cpp::github_rest::Commit::tree);
 };
 
 #endif // SIMPLE_CPP_GITHUB_REST_COMMIT_HPP

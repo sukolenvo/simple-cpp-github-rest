@@ -15,14 +15,15 @@ struct RepositoryContent
 };
 } // namespace simple_cpp::github_rest
 
-template <>
-struct glz::meta<simple_cpp::github_rest::RepositoryContent> {
+template<> struct glz::meta<simple_cpp::github_rest::RepositoryContent>
+{
   using T = simple_cpp::github_rest::RepositoryContent;
-  static constexpr auto value = object(
-    "type", &simple_cpp::github_rest::RepositoryContent::type,
-    "encoding", &simple_cpp::github_rest::RepositoryContent::encoding,
-    "content", &simple_cpp::github_rest::RepositoryContent::content
-  );
+  static constexpr auto value = object("type",
+    &simple_cpp::github_rest::RepositoryContent::type,
+    "encoding",
+    &simple_cpp::github_rest::RepositoryContent::encoding,
+    "content",
+    &simple_cpp::github_rest::RepositoryContent::content);
 };
 
 

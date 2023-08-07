@@ -1,7 +1,8 @@
 #include "update_reference.hpp"
 
 simple_cpp::github_rest::UpdateReferenceRequest::UpdateReferenceRequest(const std::string &ref,
-  simple_cpp::github_rest::UpdateReferenceRequestBody body) : requestBody(std::move(body))
+  simple_cpp::github_rest::UpdateReferenceRequestBody body)
+  : requestBody(std::move(body))
 {
   request.add_path_segment("git")->add_path_segment("refs")->add_path_segment(ref);
 }

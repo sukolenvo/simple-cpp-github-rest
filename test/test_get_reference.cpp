@@ -14,8 +14,5 @@ TEST_CASE("get_reference")
 
   REQUIRE(reference.object.sha == "aa218f56b14c9653891f9e74264a383fa43fefbd");
   REQUIRE(reference.object.type == "commit");
-  REQUIRE(client.pop_recorded_request()
-          == RecordedRequest{ "GET",
-            "/git/ref/branch/main",
-            "" });
+  REQUIRE(client.pop_recorded_request() == RecordedRequest{ "GET", "/git/ref/branch/main", "" });
 }

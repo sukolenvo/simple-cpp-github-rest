@@ -28,6 +28,7 @@ class CreateCommitRequest
 {
   simple_cpp::github_rest::Request request;
   CreateCommitRequestBody requestBody;
+
 public:
   explicit CreateCommitRequest(CreateCommitRequestBody body);
 
@@ -36,23 +37,22 @@ public:
 
 } // namespace simple_cpp::github_rest
 
-template <>
-struct glz::meta<simple_cpp::github_rest::Author> {
+template<> struct glz::meta<simple_cpp::github_rest::Author>
+{
   using T = simple_cpp::github_rest::Author;
-  static constexpr auto value = object(
-    "name", &simple_cpp::github_rest::Author::name,
-    "email", &simple_cpp::github_rest::Author::email
-  );
+  static constexpr auto value =
+    object("name", &simple_cpp::github_rest::Author::name, "email", &simple_cpp::github_rest::Author::email);
 };
 
-template <>
-struct glz::meta<simple_cpp::github_rest::CreateCommitRequestBody> {
+template<> struct glz::meta<simple_cpp::github_rest::CreateCommitRequestBody>
+{
   using T = simple_cpp::github_rest::CreateCommitRequestBody;
-  static constexpr auto value = object(
-    "message", &simple_cpp::github_rest::CreateCommitRequestBody::message,
-    "author", &simple_cpp::github_rest::CreateCommitRequestBody::author,
-    "tree", &simple_cpp::github_rest::CreateCommitRequestBody::tree
-  );
+  static constexpr auto value = object("message",
+    &simple_cpp::github_rest::CreateCommitRequestBody::message,
+    "author",
+    &simple_cpp::github_rest::CreateCommitRequestBody::author,
+    "tree",
+    &simple_cpp::github_rest::CreateCommitRequestBody::tree);
 };
 
 #endif // SIMPLE_CPP_GITHUB_REST_CREATE_COMMIT_HPP

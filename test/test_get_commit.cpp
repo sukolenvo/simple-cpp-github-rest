@@ -8,7 +8,7 @@ TEST_CASE("get_commit")
   MockClient client;
   client.enqueue_resource_response("sample_commit");
 
-  simple_cpp::github_rest::GetCommitRequest request{"commitSha"};
+  simple_cpp::github_rest::GetCommitRequest request{ "commitSha" };
 
   const auto commit = request.execute(client);
 

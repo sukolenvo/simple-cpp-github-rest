@@ -1,7 +1,8 @@
 #include "create_reference.hpp"
 
 simple_cpp::github_rest::CreateReferenceRequest::CreateReferenceRequest(
-  simple_cpp::github_rest::CreateReferenceRequestBody body) : requestBody(std::move(body))
+  simple_cpp::github_rest::CreateReferenceRequestBody body)
+  : requestBody(std::move(body))
 {
   request.add_path_segment("git")->add_path_segment("refs");
 }

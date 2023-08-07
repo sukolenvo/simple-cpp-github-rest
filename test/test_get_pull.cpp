@@ -8,7 +8,7 @@ TEST_CASE("get_pull")
   MockClient client;
   client.enqueue_resource_response("sample_pull");
 
-  simple_cpp::github_rest::GetPullRequest request{33};
+  simple_cpp::github_rest::GetPullRequest request{ 33 };
 
   const auto pull = request.execute(client);
 

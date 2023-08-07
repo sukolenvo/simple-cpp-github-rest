@@ -42,8 +42,8 @@ TEST_CASE("create_tree_no_base")
   const auto tree = request.execute(client);
 
   REQUIRE(tree.sha == "cd8274d15fa3ae2ab983129fb037999f264ba9a7");
-  REQUIRE(client.pop_recorded_request()
-          == RecordedRequest{ "POST",
-            "/git/trees",
-            "{\"tree\":[{\"path\":\"filePath\",\"mode\":\"100644\",\"content\":\"file body\"}]}" });
+  REQUIRE(
+    client.pop_recorded_request()
+    == RecordedRequest{
+      "POST", "/git/trees", "{\"tree\":[{\"path\":\"filePath\",\"mode\":\"100644\",\"content\":\"file body\"}]}" });
 }

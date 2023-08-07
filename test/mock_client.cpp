@@ -5,7 +5,7 @@
 #include "mock_client.hpp"
 #include "resourse_util.hpp"
 
-std::ostream& operator <<(std::ostream& os, const RecordedRequest& value)
+std::ostream &operator<<(std::ostream &os, const RecordedRequest &value)
 {
   os << "RecordedRequest(" << value.method << ' ' << value.path << ", " << value.body << ')';
   return os;

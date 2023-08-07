@@ -21,20 +21,21 @@ class CreateReferenceRequest
 {
   simple_cpp::github_rest::Request request;
   CreateReferenceRequestBody requestBody;
+
 public:
   explicit CreateReferenceRequest(CreateReferenceRequestBody body);
 
   simple_cpp::github_rest::Reference execute(simple_cpp::github_rest::Client &client);
 };
-}
+} // namespace simple_cpp::github_rest
 
-template <>
-struct glz::meta<simple_cpp::github_rest::CreateReferenceRequestBody> {
+template<> struct glz::meta<simple_cpp::github_rest::CreateReferenceRequestBody>
+{
   using T = simple_cpp::github_rest::CreateReferenceRequestBody;
-  static constexpr auto value = object(
-    "ref", &simple_cpp::github_rest::CreateReferenceRequestBody::ref,
-    "sha", &simple_cpp::github_rest::CreateReferenceRequestBody::sha
-  );
+  static constexpr auto value = object("ref",
+    &simple_cpp::github_rest::CreateReferenceRequestBody::ref,
+    "sha",
+    &simple_cpp::github_rest::CreateReferenceRequestBody::sha);
 };
 
 #endif // SIMPLE_CPP_GITHUB_REST_CREATE_REFERENCE_HPP

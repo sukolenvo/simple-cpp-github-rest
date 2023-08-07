@@ -16,6 +16,6 @@ public:
 
   simple_cpp::github_rest::Reference execute(simple_cpp::github_rest::Client &client);
 };
-}
+} // namespace simple_cpp::github_rest
 
 #endif // SIMPLE_CPP_GITHUB_REST_GET_REFERENCE_HPP

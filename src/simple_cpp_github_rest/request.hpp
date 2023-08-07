@@ -17,7 +17,6 @@ public:
   // TODO varargs
   simple_cpp::github_rest::Request *add_path_segment(const std::string &segment);
   simple_cpp::github_rest::Request *set_query_param(std::string key, std::string value);
-
 };
 } // namespace simple_cpp::github_rest
 

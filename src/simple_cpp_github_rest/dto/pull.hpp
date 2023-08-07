@@ -8,16 +8,14 @@ namespace simple_cpp::github_rest {
 struct Pull
 {
   unsigned long number{};
-  bool operator <=>(const Pull &other) const = default;
+  bool operator<=>(const Pull &other) const = default;
 };
 } // namespace simple_cpp::github_rest
 
-template <>
-struct glz::meta<simple_cpp::github_rest::Pull> {
+template<> struct glz::meta<simple_cpp::github_rest::Pull>
+{
   using T = simple_cpp::github_rest::Pull;
-  static constexpr auto value = object(
-    "number", &simple_cpp::github_rest::Pull::number
-  );
+  static constexpr auto value = object("number", &simple_cpp::github_rest::Pull::number);
 };
 
 #endif // SIMPLE_CPP_GITHUB_REST_PULL_HPP
