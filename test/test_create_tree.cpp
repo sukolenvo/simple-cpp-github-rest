@@ -9,9 +9,7 @@ TEST_CASE("create_tree")
   client.enqueue_resource_response(201, "sample_tree");
 
   const simple_cpp::github_rest::CreateTreeRequestBody requestBody{
-    .tree = { { .path = "filePath",
-      .mode = simple_cpp::github_rest::MODE_FILE,
-      .content = "file body" } },
+    .tree = { { .path = "filePath", .mode = simple_cpp::github_rest::MODE_FILE, .content = "file body" } },
     .base_tree = { "baseTreSha" }
   };
   simple_cpp::github_rest::CreateTreeRequest request{ requestBody };
@@ -32,9 +30,7 @@ TEST_CASE("create_tree_no_base")
   client.enqueue_resource_response(201, "sample_tree");
 
   const simple_cpp::github_rest::CreateTreeRequestBody requestBody{
-    .tree = { { .path = "filePath",
-      .mode = simple_cpp::github_rest::MODE_FILE,
-      .content = "file body" } },
+    .tree = { { .path = "filePath", .mode = simple_cpp::github_rest::MODE_FILE, .content = "file body" } },
     .base_tree = {}
   };
   simple_cpp::github_rest::CreateTreeRequest request{ requestBody };
