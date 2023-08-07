@@ -1,6 +1,8 @@
 #ifndef SIMPLE_CPP_GITHUB_REST_PULL_HPP
 #define SIMPLE_CPP_GITHUB_REST_PULL_HPP
 
+#include <compare>
+
 #include <glaze/glaze.hpp>
 
 namespace simple_cpp::github_rest {
@@ -8,7 +10,7 @@ namespace simple_cpp::github_rest {
 struct Pull
 {
   unsigned long number{};
-  bool operator<=>(const Pull &other) const = default;
+  std::strong_ordering operator<=>(const Pull &other) const = default;
 };
 } // namespace simple_cpp::github_rest
 

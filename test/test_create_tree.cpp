@@ -10,7 +10,7 @@ TEST_CASE("create_tree")
 
   const simple_cpp::github_rest::CreateTreeRequestBody requestBody{
     .tree = { { .path = "filePath",
-      .mode = simple_cpp::github_rest::CreateTreeEntry::MODE_FILE,
+      .mode = simple_cpp::github_rest::MODE_FILE,
       .content = "file body" } },
     .base_tree = { "baseTreSha" }
   };
@@ -33,7 +33,7 @@ TEST_CASE("create_tree_no_base")
 
   const simple_cpp::github_rest::CreateTreeRequestBody requestBody{
     .tree = { { .path = "filePath",
-      .mode = simple_cpp::github_rest::CreateTreeEntry::MODE_FILE,
+      .mode = simple_cpp::github_rest::MODE_FILE,
       .content = "file body" } },
     .base_tree = {}
   };

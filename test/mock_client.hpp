@@ -1,6 +1,7 @@
 #ifndef SIMPLE_CPP_GITHUB_REST_MOCK_CLIENT_HPP
 #define SIMPLE_CPP_GITHUB_REST_MOCK_CLIENT_HPP
 
+#include <compare>
 #include <ostream>
 #include <queue>
 
@@ -11,7 +12,7 @@ struct RecordedRequest
   std::string method;
   std::string path;
   std::string body;
-  bool operator<=>(const RecordedRequest &other) const = default;
+  std::strong_ordering operator<=>(const RecordedRequest &other) const = default;
 };
 
 std::ostream &operator<<(std::ostream &os, const RecordedRequest &value);
