@@ -11,7 +11,7 @@
 
 namespace simple_cpp::github_rest {
 
-constexpr static const std::string MODE_FILE{ "100644" };
+static const std::string MODE_FILE{ "100644" };
 
 struct CreateTreeEntry
 {
