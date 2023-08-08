@@ -6,7 +6,7 @@ option(SIMPLE_CPP_GITHUB_REST_WARNINGS_AS_ERRORS "Treat compiler warnings as err
 add_library(simple-cpp-github-rest-compiler_options INTERFACE)
 target_compile_features(simple-cpp-github-rest-compiler_options INTERFACE cxx_std_20)
 if (MSVC)
-  target_compile_options(simple-cpp-github-rest-compiler_options INTERFACE /W4)
+  target_compile_options(simple-cpp-github-rest-compiler_options INTERFACE /W4 /DNOMINMAX)
   if (SIMPLE_CPP_GITHUB_REST_WARNINGS_AS_ERRORS)
     target_compile_options(simple-cpp-github-rest-compiler_options INTERFACE /WX)
   endif ()
