@@ -55,7 +55,7 @@ jobs:
         with:
           submodules: true
       - name: Configure CMake
-        run: cmake -S . -B ./build -DCMAKE_BUILD_TYPE:STRING=${{matrix.build-type}} -DSIMPLE_CPP_GITHUB_REST_WARNINGS_AS_ERRORS:BOOL=ON
+        run: cmake -S . -B ./build -DCMAKE_BUILD_TYPE:STRING=${{matrix.build-type}} -DSIMPLE_CPP_GITHUB_REST_WARNINGS_AS_ERRORS:BOOL=ON -DBUILD_SHARED_LIBS:BOOL=OFF
       - name: Build
         run: cmake --build ./build --config ${{matrix.build-type}} -- /m
       - name: Test and coverage

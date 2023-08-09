@@ -2,14 +2,15 @@
 #define SIMPLE_CPP_GITHUB_REST_REQUEST_HPP
 
 #include <string>
-#include <unordered_map>
+#include <tuple>
+#include <vector>
 
 namespace simple_cpp::github_rest {
 
 class Request
 {
   std::string path;
-  std::unordered_map<std::string, std::string> queryParams;
+  std::vector<std::pair<std::string, std::string>> queryParams;
 
 public:
   std::string build_url() const;

@@ -26,6 +26,12 @@ simple_cpp::github_rest::Request *simple_cpp::github_rest::Request::add_path_seg
 
 simple_cpp::github_rest::Request *simple_cpp::github_rest::Request::set_query_param(std::string key, std::string value)
 {
-  queryParams.emplace(std::move(key), std::move(value));
+  for (auto &[k, v] : queryParams) {
+    if (k == key) {
+      v = value;
+      return this;
+    }
+  }
+  queryParams.emplace_back(std::move(key), std::move(value));
   return this;
 }
