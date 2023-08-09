@@ -3,6 +3,10 @@ on:
   push:
     branches:
 
+# https://github.com/curl/curl/issues/10356
+env:
+  DEVELOPER_DIR: /Applications/Xcode_14.0.1.app/Contents/Developer
+
 jobs:
   lint:
     runs-on: ubuntu-22.04
