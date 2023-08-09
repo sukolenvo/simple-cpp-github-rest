@@ -22,6 +22,7 @@ Api reference: https://docs.github.com/en/rest?apiVersion=2022-11-28
 * Pulls
   * Pulls
     * [Get a pull request](https://docs.github.com/en/rest/pulls/pulls?apiVersion=2022-11-28#get-a-pull-request)
+    * [Update a pull request](https://docs.github.com/en/rest/pulls/pulls?apiVersion=2022-11-28#update-a-pull-request)
 * Repositories
   * Contents
     * [Get repository content](https://docs.github.com/en/rest/repos/contents?apiVersion=2022-11-28#get-repository-content)

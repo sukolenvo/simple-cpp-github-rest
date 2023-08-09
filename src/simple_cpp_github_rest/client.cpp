@@ -1,12 +1,11 @@
-#include <stdexcept>
 #include <string>
 #include <utility>
 
 #include <curl/curl.h>
+#include <glaze/glaze.hpp>
 
 #include "client.hpp"
-
-#include "glaze/glaze.hpp"
+#include "exception.hpp"
 
 namespace simple_cpp::github_rest {
 
@@ -53,7 +52,7 @@ simple_cpp::github_rest::Response Client::get(const std::string &path)
     } else {
     }
   }
-  throw std::runtime_error("curl init failed");
+  throw simple_cpp::github_rest::GithubRestException("curl init failed");
 }
 
 simple_cpp::github_rest::Response
@@ -91,7 +90,7 @@ simple_cpp::github_rest::Response
     } else {
     }
   }
-  throw std::runtime_error("curl init failed");
+  throw simple_cpp::github_rest::GithubRestException("curl init failed");
 }
 
 simple_cpp::github_rest::Response Client::post(const std::string &path, const std::string &body)

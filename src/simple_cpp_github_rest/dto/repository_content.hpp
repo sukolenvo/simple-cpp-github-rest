@@ -12,6 +12,8 @@ struct RepositoryContent
   std::string type;
   std::string encoding;
   std::string content;
+
+  std::string parse_content() const;
 };
 } // namespace simple_cpp::github_rest
 

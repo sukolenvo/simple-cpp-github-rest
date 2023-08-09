@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.26)
 
-project(simple-cpp-github-rest VERSION 0.1 LANGUAGES CXX C)
+project(simple-cpp-github-rest VERSION 0.2 LANGUAGES CXX C)
 
 option(SIMPLE_CPP_GITHUB_REST_WARNINGS_AS_ERRORS "Treat compiler warnings as errors")
 add_library(simple-cpp-github-rest-compiler_options INTERFACE)
@@ -27,11 +27,16 @@ FetchContent_Declare(
 FetchContent_Declare(
     glaze
     GIT_REPOSITORY https://github.com/stephenberry/glaze.git
-    GIT_TAG main #1.3.4
+    GIT_TAG b99111789445dc3693c7542dabe1ee1538a39611 #1.3.5
     GIT_SHALLOW TRUE
 )
-
-FetchContent_MakeAvailable(curl glaze)
+FetchContent_Declare(
+    base64
+    GIT_REPOSITORY https://github.com/sukolenvo/simple-cpp-base64.git
+    GIT_TAG 390e4c860bfd071a53223dd059cb73a822af4df5
+    GIT_SHALLOW TRUE
+)
+FetchContent_MakeAvailable(curl glaze base64)
 
 add_subdirectory(src)
 
