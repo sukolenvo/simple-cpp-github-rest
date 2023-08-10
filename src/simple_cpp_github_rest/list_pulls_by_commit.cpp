@@ -19,8 +19,7 @@ std::vector<simple_cpp::github_rest::Pull> simple_cpp::github_rest::ListPullsByC
   request.set_query_param("page", "1");
   simple_cpp::github_rest::Response response = client.get(request.build_url());
   if (response.status_code() != 200) {
-    throw simple_cpp::github_rest::GithubRestException(
-      std::string("Failed to list pulls by commit. Response code: ") + std::to_string(response.status_code()));
+    throw simple_cpp::github_rest::GithubRestApiException("List pulls by commit", response);
   }
   std::vector<simple_cpp::github_rest::Pull> result;
   static const int MAX_PAGES = 100;
@@ -29,8 +28,7 @@ std::vector<simple_cpp::github_rest::Pull> simple_cpp::github_rest::ListPullsByC
     std::vector<simple_cpp::github_rest::Pull> chunk;
     auto err = glz::read<glz::opts{ .error_on_unknown_keys = false }>(chunk, response.get_body());
     if (err) {
-      throw simple_cpp::github_rest::GithubRestException(
-        std::string("Failed to list pulls by commit. Parse error: ") + glz::format_error(err, response.get_body()));
+      throw simple_cpp::github_rest::GithubRestParseException("List pulls by commit", err, response);
     }
     result.insert(result.end(), chunk.begin(), chunk.end());
     if (chunk.size() != PAGE_SIZE) {

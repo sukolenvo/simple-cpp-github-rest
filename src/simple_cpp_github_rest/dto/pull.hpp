@@ -2,6 +2,7 @@
 #define SIMPLE_CPP_GITHUB_REST_PULL_HPP
 
 #include <compare>
+#include <optional>
 
 #include <glaze/glaze.hpp>
 
@@ -17,7 +18,7 @@ struct PullCommit
 struct Pull
 {
   unsigned long number{};
-  std::string body;
+  std::optional<std::string> body;
   PullCommit head;
   PullCommit base;
 

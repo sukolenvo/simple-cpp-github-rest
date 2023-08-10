@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.26)
 
-project(simple-cpp-github-rest VERSION 0.2 LANGUAGES CXX C)
+project(simple-cpp-github-rest VERSION 0.3 LANGUAGES CXX C)
 
 option(SIMPLE_CPP_GITHUB_REST_WARNINGS_AS_ERRORS "Treat compiler warnings as errors")
 add_library(simple-cpp-github-rest-compiler_options INTERFACE)
