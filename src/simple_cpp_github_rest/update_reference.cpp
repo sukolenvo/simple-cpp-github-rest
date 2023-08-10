@@ -1,3 +1,6 @@
+#include <string>
+
+#include "exception.hpp"
 #include "update_reference.hpp"
 
 simple_cpp::github_rest::UpdateReferenceRequest::UpdateReferenceRequest(const std::string &ref,
@@ -12,12 +15,14 @@ simple_cpp::github_rest::Reference simple_cpp::github_rest::UpdateReferenceReque
   std::string json = glz::write_json(requestBody);
   simple_cpp::github_rest::Response response = client.patch(request.build_url(), json);
   if (response.status_code() != 200) {
-    throw "unexpected response code";
+    throw simple_cpp::github_rest::GithubRestException(
+      std::string("Failed to update reference. Response code: ") + std::to_string(response.status_code()));
   }
   simple_cpp::github_rest::Reference reference;
   auto err = glz::read<glz::opts{ .error_on_unknown_keys = false }>(reference, response.get_body());
   if (err) {
-    throw std::runtime_error(glz::format_error(err, response.get_body()));
+    throw simple_cpp::github_rest::GithubRestException(
+      std::string("Failed to update reference. Parse error: ") + glz::format_error(err, response.get_body()));
   }
   return reference;
 }

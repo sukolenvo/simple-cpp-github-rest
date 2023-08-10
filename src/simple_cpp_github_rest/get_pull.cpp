@@ -1,5 +1,6 @@
 #include <string>
 
+#include "exception.hpp"
 #include "get_pull.hpp"
 
 simple_cpp::github_rest::GetPullRequest::GetPullRequest(unsigned long number)
@@ -11,12 +12,14 @@ simple_cpp::github_rest::Pull simple_cpp::github_rest::GetPullRequest::execute(s
 {
   simple_cpp::github_rest::Response response = client.get(request.build_url());
   if (response.status_code() != 200) {
-    throw "unexpected response code";
+    throw simple_cpp::github_rest::GithubRestException(
+      std::string("Failed to get pull. Response code: ") + std::to_string(response.status_code()));
   }
   simple_cpp::github_rest::Pull pull;
   auto err = glz::read<glz::opts{ .error_on_unknown_keys = false }>(pull, response.get_body());
   if (err) {
-    throw std::runtime_error(glz::format_error(err, response.get_body()));
+    throw simple_cpp::github_rest::GithubRestException(
+      std::string("Failed to get pull. Response code: ") + std::to_string(response.status_code()));
   }
   return pull;
 }
