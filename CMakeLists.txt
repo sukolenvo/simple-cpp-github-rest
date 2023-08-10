@@ -21,19 +21,19 @@ include(FetchContent)
 FetchContent_Declare(
     curl
     GIT_REPOSITORY https://github.com/curl/curl.git
-    GIT_TAG 50490c0679fcd0e50bb3a8fbf2d9244845652cf0 #8.2.1
+    GIT_TAG curl-8_2_1
     GIT_SHALLOW TRUE
 )
 FetchContent_Declare(
     glaze
     GIT_REPOSITORY https://github.com/stephenberry/glaze.git
-    GIT_TAG b99111789445dc3693c7542dabe1ee1538a39611 #1.3.5
+    GIT_TAG v1.3.5
     GIT_SHALLOW TRUE
 )
 FetchContent_Declare(
     base64
     GIT_REPOSITORY https://github.com/sukolenvo/simple-cpp-base64.git
-    GIT_TAG b4aaea2705e12b85c41976173ce0372d48e7d322
+    GIT_TAG v1.0.1
     GIT_SHALLOW TRUE
 )
 FetchContent_MakeAvailable(curl glaze base64)
@@ -42,7 +42,13 @@ add_subdirectory(src)
 
 if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
   enable_testing()
-  add_subdirectory(vendor/Catch2)
+  FetchContent_Declare(
+      Catch2
+      GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+      GIT_TAG v3.4.0
+      GIT_SHALLOW TRUE
+  )
+  FetchContent_MakeAvailable(Catch2)
   add_subdirectory(test)
   include(CTest)
 endif ()
