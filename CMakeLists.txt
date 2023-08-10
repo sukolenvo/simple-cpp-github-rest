@@ -33,7 +33,7 @@ FetchContent_Declare(
 FetchContent_Declare(
     base64
     GIT_REPOSITORY https://github.com/sukolenvo/simple-cpp-base64.git
-    GIT_TAG 390e4c860bfd071a53223dd059cb73a822af4df5
+    GIT_TAG b4aaea2705e12b85c41976173ce0372d48e7d322
     GIT_SHALLOW TRUE
 )
 FetchContent_MakeAvailable(curl glaze base64)
