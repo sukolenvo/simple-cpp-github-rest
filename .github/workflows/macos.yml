@@ -26,11 +26,7 @@ jobs:
         compiler:
           - cpp: g++-12
             c: gcc-12
-        include:
-          - build-type: Debug
-            compiler:
-              cpp: g++-12
-              c: gcc-12
+
     steps:
       - uses: actions/checkout@v3
       - name: Configure CMake
