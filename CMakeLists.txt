@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.26)
 
 project(simple-cpp-github-rest VERSION 0.3 LANGUAGES CXX C)
 
+option(OPT_ENABLE_COVERAGE "Enable code coverage")
 option(SIMPLE_CPP_GITHUB_REST_WARNINGS_AS_ERRORS "Treat compiler warnings as errors")
 add_library(simple-cpp-github-rest-compiler_options INTERFACE)
 target_compile_features(simple-cpp-github-rest-compiler_options INTERFACE cxx_std_20)
@@ -15,6 +16,12 @@ else ()
   if (SIMPLE_CPP_GITHUB_REST_WARNINGS_AS_ERRORS)
     target_compile_options(simple-cpp-github-rest-compiler_options INTERFACE -Werror)
   endif ()
+  if (OPT_ENABLE_COVERAGE)
+    if (CMAKE_COMPILER_IS_GNUCXX)
+      target_compile_options(simple-cpp-github-rest-compiler_options INTERFACE -fprofile-arcs -ftest-coverage)
+      target_link_options(simple-cpp-github-rest-compiler_options INTERFACE -lgcov --coverage)
+    endif ()
+  endif ()
 endif ()
 
 include(FetchContent)
@@ -27,7 +34,7 @@ FetchContent_Declare(
 FetchContent_Declare(
     glaze
     GIT_REPOSITORY https://github.com/stephenberry/glaze.git
-    GIT_TAG v1.3.5
+    GIT_TAG v1.5.2
     GIT_SHALLOW TRUE
 )
 FetchContent_Declare(
