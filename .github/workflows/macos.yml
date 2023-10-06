@@ -24,8 +24,8 @@ jobs:
           - Debug
           - Release
         compiler:
-          - cpp: clang++
-            c: clang
+          - cpp: g++-12
+            c: gcc-12
         include:
           - build-type: Debug
             compiler:
